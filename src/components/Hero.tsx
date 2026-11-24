@@ -80,11 +80,16 @@ export const Hero: React.FC<HeroProps> = ({ onEnquireClick }) => {
           alt="Bettada Madilu Homestay nestled in misty Mullodi hills, Kudremukh"
           className="h-full w-full object-cover object-center brightness-[0.68] saturate-[1.08]"
         />
-        {/* Live Animated Panoramic GIF Layer */}
-        <img
-          src="/images/hero-pan.gif"
-          alt="Live panoramic view of Bettada Madilu Homestay in Mullodi, Kudremukh"
-          onLoad={() => setGifLoaded(true)}
+        {/* Live Hero Video Layer */}
+        <video
+          src="/images/hero-video.mp4"
+          poster="/images/hero-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          onCanPlay={() => setGifLoaded(true)}
           className={`absolute inset-0 h-full w-full object-cover object-center brightness-[0.72] contrast-[1.05] saturate-[1.12] transition-opacity duration-1000 ${
             gifLoaded ? 'opacity-100' : 'opacity-0'
           }`}
