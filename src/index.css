@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-forest-950: #09120e;
+  --color-forest-900: #0e1b16;
+  --color-forest-800: #152921;
+  --color-forest-700: #1f3c30;
+  --color-moss-600: #2e5a44;
+  --color-moss-400: #4f8a69;
+
+  --color-mist-50: #faf8f3;
+  --color-mist-100: #f6f2ea;
+  --color-mist-200: #ede6d8;
+  --color-mist-300: #dfd5c2;
+
+  --color-terracotta-500: #c85a2b;
+  --color-terracotta-400: #e0723f;
+  --color-terracotta-600: #a8461d;
+  --color-gold-400: #d4a24c;
+  --color-gold-300: #e7c076;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #0e1b16;
+    color: #f6f2ea;
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Malnad Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0e1b16;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2e5a44;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c85a2b;
+  }
+}
+
+/* Editorial Film Grain Overlay */
+.grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Drifting Western Ghats Mist Animation */
+@keyframes mistDrift {
+  0% {
+    transform: translate3d(-4%, 0, 0) scale(1);
+    opacity: 0.42;
+  }
+  50% {
+    transform: translate3d(4%, -2%, 0) scale(1.06);
+    opacity: 0.68;
+  }
+  100% {
+    transform: translate3d(-4%, 0, 0) scale(1);
+    opacity: 0.42;
+  }
+}
+
+.animate-mist {
+  animation: mistDrift 18s ease-in-out infinite;
+}
+
+.animate-mist-slow {
+  animation: mistDrift 26s ease-in-out infinite reverse;
+}
+
+/* Gentle Ken Burns Zoom */
+@keyframes kenBurns {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.07) translate3d(-1.2%, -0.8%, 0);
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+.animate-ken-burns {
+  animation: kenBurns 24s ease-in-out infinite;
+}
+
+/* Button Shimmer Sweep */
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-20deg);
+  }
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 45%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
+  transform: translateX(-120%) skewX(-20deg);
+  transition: transform 0.65s ease;
+}
+.btn-shimmer:hover::after {
+  animation: shimmerSweep 0.85s ease forwards;
+}
+
+/* Infinite Smooth Marquee for Guest Reviews */
+@keyframes marqueeLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 42s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Warm Bonfire Ember Pulse */
+@keyframes emberPulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+.animate-ember {
+  animation: emberPulse 5s ease-in-out infinite;
+}
+
+/* Scalloped Malnad Eave Motif (Inspired by Bettada Madilu's real veranda trim!) */
+.malnad-scallop {
+  background-image: radial-gradient(circle at 12px 0, transparent 10px, #c85a2b 10.5px, #c85a2b 12px, transparent 12.5px);
+  background-size: 24px 12px;
+  background-repeat: repeat-x;
+}
